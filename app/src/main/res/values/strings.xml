@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SQLiteDatabase</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="lnlLogin">Login</string>
+    <string name="sqlitedatabase">SQLiteDatabase</string>
+    <string name="id">ID:</string>
+    <string name="name">Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="maths_marks">Maths Marks:</string>
+    <string name="student_number">Student Number:</string>
+    <string name="edtId">ID</string>
+    <string name="edtName">Name</string>
+    <string name="edtSurname">Surname</string>
+    <string name="edtMarks">Marks</string>
+    <string name="edtStudent_number">Student Number</string>
+    <string name="student_details">Student Details</string>
+    <string name="save_student">Save Student</string>
+    <string name="update_student">Update Student</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_or_update_a_student_below">Add or Update a student below....</string>
+</resources>
