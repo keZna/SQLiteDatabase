@@ -17,12 +17,14 @@ public class StndHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
     ContentValues values;
 
-    public static final String DATABASE_NAME = "Student.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "Studentss.db";
+    public static final int DATABASE_VERSION = 3;
     public static final String TABLE_NAME = "Students";
     public static final String _ID = "ID";
     public static final String NAME = "Name";
     public static final String SURNAME = "Surname";
+    public static final String MARKS = "Marks";
+    public static final String STUDENTNo = "StudentNo";
     public static final String selection = NAME + " = ? ";
     public static final String TYPE = "UPDATE";
     public static final int UPDATE_RECORD=1;
@@ -31,9 +33,11 @@ public class StndHelper extends SQLiteOpenHelper {
     public static final String ADD="ADD";
     public static final String CREATE_TABLE = "CREATE TABLE "
             + TABLE_NAME + " ("
-            + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + NAME + " TEXT NOT NULL, "
-            + SURNAME + " TEXT NOT NULL);";
+            + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + NAME + " TEXT NOT NULL,"
+            + SURNAME + " TEXT NOT NULL,"
+            + MARKS + " TEXT NOT NULL,"
+            + STUDENTNo + " TEXT NOT NULL);";
 
     public StndHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,8 +50,7 @@ public class StndHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_NAME);
-        onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.close();
     }
 
@@ -57,17 +60,21 @@ public class StndHelper extends SQLiteOpenHelper {
         values = new ContentValues();
         values.put(NAME, contactStudent.getmName());
         values.put(SURNAME, contactStudent.getmSurname());
+        values.put(MARKS, contactStudent.getmMarks());
+        values.put(STUDENTNo, contactStudent.getmStudentNo());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
-    public void Update(long id, String name, String surname) {
+    public void Update(long id, String name, String surname, String marks, String studentNo) {
         db = this.getWritableDatabase();
 
         values = new ContentValues();
         values.put(NAME, name);
         values.put(SURNAME, surname);
+        values.put(MARKS, marks);
+        values.put(STUDENTNo, studentNo);
         db.update(TABLE_NAME, values, _ID + "=" + id, null);
     }
 
@@ -76,6 +83,8 @@ public class StndHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(NAME,contactStudent.getmName());
         values.put(SURNAME,contactStudent.getmSurname());
+        values.put(MARKS,contactStudent.getmMarks());
+        values.put(STUDENTNo, contactStudent.getmStudentNo());
         db.update(TABLE_NAME, values, _ID + " =? ", new String[]{String.valueOf(contactStudent.getmID())});
         db.close();
     }
@@ -119,6 +128,8 @@ public class StndHelper extends SQLiteOpenHelper {
                 contactStudent.setmID(cursor.getInt(0));
                 contactStudent.setmName((cursor.getString(1)));
                 contactStudent.setmSurname(cursor.getString(2));
+                contactStudent.setmMarks(cursor.getString(3));
+                contactStudent.setmStudentNo(cursor.getString(4));
                 students.add(contactStudent);
             }
         }

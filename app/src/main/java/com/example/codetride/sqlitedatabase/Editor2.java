@@ -30,12 +30,16 @@ public class Editor2 extends AppCompatActivity {
 
         edtName = (EditText) findViewById(R.id.name);
         edtSurname = (EditText) findViewById(R.id.surname);
+        edtMarks = (EditText) findViewById(R.id.marks);
+        edtStudentNo = (EditText) findViewById(R.id.studentNo);
 
         String names = edtName.getText().toString();
         String surnames = edtSurname.getText().toString();
+        String marks = edtMarks.getText().toString();
+        String studentNo = edtStudentNo.getText().toString();
 
         int id = 0;
-        contactStudent = new ContactStudent(id++, names, surnames);
+        contactStudent = new ContactStudent(id++, names, surnames,marks,studentNo);
 
         StndHelper stndHelper = new StndHelper(this);
         stndHelper.AddStudent(contactStudent);

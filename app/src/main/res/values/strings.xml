@@ -20,4 +20,6 @@
     <string name="update_student">Update Student</string>
     <string name="cancel">Cancel</string>
     <string name="add_or_update_a_student_below">Add or Update a student below....</string>
+    <string name="add_student_below">Add student below</string>
+    <string name="update_the_student_below">Update the student below</string>
 </resources>

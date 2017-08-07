@@ -37,7 +37,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:layout_marginBottom="10dp"
-                android:text="Add student below"/>
+                android:text="@string/add_student_below"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                         intent = new Intent(MainActivity.this, EditorActivity.class);
                         startActivity(intent);
-                        update(contacts.getmID(),contacts.getmName(),contacts.getmSurname());
+                        update(contacts.getmID(),contacts.getmName(),contacts.getmSurname(),contacts.getmMarks(),contacts.getmStudentNo());
                         finish();
                         startActivity(intent);
                     }
@@ -93,14 +93,18 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK){
             String name = data.getStringExtra(StndHelper.NAME);
             String surname = data.getStringExtra(StndHelper.SURNAME);
+            String marks = data.getStringExtra(StndHelper.MARKS);
+            String studentNo = data.getStringExtra(StndHelper.STUDENTNo);
 
             ContactStudent contactStudent = new ContactStudent();
             contactStudent.setmName(name);
             contactStudent.setmSurname(surname);
+            contactStudent.setmMarks(marks);
+            contactStudent.setmStudentNo(studentNo);
 
             if (requestCode == StndHelper.UPDATE_RECORD){
                 int id= data.getIntExtra(StndHelper._ID,contactStudent.getmID());
-                stndHelper.Update(id,name,surname);
+                stndHelper.Update(id,name,surname,marks,studentNo);
                 stndHelper.update(contactStudent);
 
             }else if (requestCode == StndHelper.ADD_RECORD){
@@ -109,11 +113,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void update(int id, String name, String surname){
+    public void update(int id, String name, String surname, String marks, String studentNo){
 
         intent.putExtra(StndHelper.NAME,name);
         intent.putExtra(StndHelper.SURNAME,surname);
         intent.putExtra(StndHelper._ID,id);
+        intent.putExtra(StndHelper.MARKS,marks);
+        intent.putExtra(StndHelper.STUDENTNo,studentNo);
 
 
         intent.putExtra(StndHelper.TYPE,StndHelper.UPDATE);

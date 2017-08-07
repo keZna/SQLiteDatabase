@@ -36,9 +36,11 @@ public class EditorActivity extends AppCompatActivity {
         int id=Integer.parseInt(edtId.getText().toString());
         String name=String.valueOf(edtName.getText().toString());
         String Surname=String.valueOf(edtSurname.getText().toString());
+        String marks=String.valueOf(edtMarks.getText().toString());
+        String studentNo=String.valueOf(edtStudentNo.getText().toString());
 
         StndHelper stndHelper = new StndHelper(this);
-        stndHelper.Update(id,name,Surname);
+        stndHelper.Update(id,name,Surname,marks,studentNo);
     }
 
     private void checkForRequest() {
@@ -48,10 +50,8 @@ public class EditorActivity extends AppCompatActivity {
             edtName.setText(getIntent().getExtras().get(StndHelper.NAME).toString());
             edtSurname.setText(getIntent().getExtras().get(StndHelper.SURNAME).toString());
             edtId.setText(getIntent().getExtras().get(StndHelper._ID).toString());
-        }else {
-            edtName.setText("");
-            edtSurname.setText("");
-            edtId.setText(0);
+            edtMarks.setText(getIntent().getExtras().get(StndHelper.MARKS).toString());
+            edtStudentNo.setText(getIntent().getExtras().get(StndHelper.STUDENTNo).toString());
         }
     }
 

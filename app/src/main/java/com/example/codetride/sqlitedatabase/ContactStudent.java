@@ -6,16 +6,18 @@ package com.example.codetride.sqlitedatabase;
 
 public class ContactStudent {
 
-    private String mName, mSurname, mMarks;
+    private String mName, mSurname, mMarks, mStudentNo;
     private int mID;
 
     public ContactStudent() {
     }
 
-    public ContactStudent(int mID, String mName, String mSurname) {
+    public ContactStudent(int mID, String mName, String mSurname, String mMarks, String mStudentNo) {
         this.mID = mID;
         this.mName = mName;
         this.mSurname = mSurname;
+        this.mMarks= mMarks;
+        this.mStudentNo=mStudentNo;
     }
 
     public int getmID() {
@@ -42,10 +44,28 @@ public class ContactStudent {
         this.mSurname = Surname;
     }
 
+    public String getmMarks() {
+        return mMarks;
+    }
+
+    public void setmMarks(String Marks) {
+        this.mMarks = Marks;
+    }
+
+    public String getmStudentNo() {
+        return mStudentNo;
+    }
+
+    public void setmStudentNo(String StudentNo) {
+        this.mStudentNo = StudentNo;
+    }
+
     @Override
     public String toString() {
-        return mID + " .  "
+        return mID + ". "
                 + mName + " - "
-                + mSurname;
+                + mSurname + " - "
+                + mMarks + " - "
+                + mStudentNo;
     }
 }
