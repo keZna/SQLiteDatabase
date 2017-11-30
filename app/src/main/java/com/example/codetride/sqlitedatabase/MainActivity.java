@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     Button add;
     Intent intent;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<ContactStudent> contactStudents = stndHelper.getAllStudents();
 
-
         ListView listView = (ListView) findViewById(R.id.list_view);
 
-
         if (listView.equals("")){
-            stndHelper.DeleteAll();
+            TextView name= (TextView) findViewById(R.id.lblName);
         }else{
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, contactStudents);
-            listView.setAdapter(adapter);
+            AdapterStudent student = new AdapterStudent(this, contactStudents);
+            listView.setAdapter(student);
         }
-
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -120,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(StndHelper._ID,id);
         intent.putExtra(StndHelper.MARKS,marks);
         intent.putExtra(StndHelper.STUDENTNo,studentNo);
-
 
         intent.putExtra(StndHelper.TYPE,StndHelper.UPDATE);
         startActivityForResult(intent,StndHelper.UPDATE_RECORD);

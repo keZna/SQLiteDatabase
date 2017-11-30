@@ -16,8 +16,8 @@ public class ContactStudent {
         this.mID = mID;
         this.mName = mName;
         this.mSurname = mSurname;
-        this.mMarks= mMarks;
-        this.mStudentNo=mStudentNo;
+        this.mMarks = mMarks;
+        this.mStudentNo = mStudentNo;
     }
 
     public int getmID() {
@@ -62,8 +62,7 @@ public class ContactStudent {
 
     @Override
     public String toString() {
-        return mID + ". "
-                + mName + " - "
+        return mName + " - "
                 + mSurname + " - "
                 + mMarks + " - "
                 + mStudentNo;

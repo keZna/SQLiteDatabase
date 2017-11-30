@@ -17,8 +17,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".EditorActivity" />
-        <activity android:name=".Editor2"></activity>
-    </application>
+        <activity android:name=".EditorActivity">
 
+        </activity>
+        <activity android:name=".Editor2"
+            android:finishOnCloseSystemDialogs="true"
+           android:parentActivityName=".MainActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+    </application>
 </manifest>

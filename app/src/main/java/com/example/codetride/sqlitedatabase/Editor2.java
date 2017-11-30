@@ -1,6 +1,10 @@
 package com.example.codetride.sqlitedatabase;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +18,7 @@ public class Editor2 extends AppCompatActivity {
     StndHelper stndHelper;
     ContactStudent contactStudent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,26 @@ public class Editor2 extends AppCompatActivity {
         edtSurname = (EditText) findViewById(R.id.surname);
         edtMarks = (EditText) findViewById(R.id.marks);
         edtStudentNo = (EditText) findViewById(R.id.studentNo);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Settings");
+        builder.setMessage("Go to the settings?");
+        builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent= new Intent(Settings.ACTION_SETTINGS);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Showing Alert Message
+        builder.show();
+
     }
 
     public void Add() {
